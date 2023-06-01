@@ -22,6 +22,10 @@ public class PositionType {
 
     @Override
     public String toString() {
+        return getString();
+    }
+
+    private static String getString() {
         return "a position type";
     }
 
