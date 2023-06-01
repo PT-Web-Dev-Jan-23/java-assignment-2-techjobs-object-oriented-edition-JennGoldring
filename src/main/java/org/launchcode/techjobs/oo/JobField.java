@@ -9,6 +9,7 @@ public abstract class JobField {
     public JobField(String value) {
         id = nextId;
         nextId++;
+        this.value = value;
     }
 
     public String getValue() {
@@ -22,5 +23,9 @@ public abstract class JobField {
     @Override
     public String toString() {
         return value;
+    }
+
+    public int getId() {
+        return id;
     }
 }

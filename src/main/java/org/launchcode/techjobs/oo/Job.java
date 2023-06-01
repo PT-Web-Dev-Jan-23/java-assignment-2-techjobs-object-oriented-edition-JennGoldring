@@ -16,13 +16,17 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
+    static {
+        new Job(); // Invoke the no-argument constructor during static initialization
+    }
     public Job() {
         id = nextId;
         nextId++;
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.id = nextId++;
+      //  this.id = nextId++;
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -45,18 +49,6 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-//    @Override
-//    public String toString(){
-//        return "\n" +
-//                "ID: " + id + "\n" +
-//                "Name: " + name + "\n" +
-//                "Employer: " + employer + "\n" +
-//                "Location: " + location + "\n" +
-//                "Position Type: " + positionType + "\n" +
-//                "Core Competency: " + coreCompetency + "\n" +
-//                "\n";
-//    }
 
     @Override
     public String toString(){
