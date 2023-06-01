@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Job {
 
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 0;
     private String name;
     private Employer employer;
     private Location location;
@@ -58,8 +58,8 @@ public class Job {
                 "Employer: " + (employer.getValue().isEmpty() ? "Data not available" :employer) + "\n" +
                 "Location: " + (location.getValue().isEmpty() ? "Data not available" :location) + "\n" +
                 "Position Type: " + (positionType.getValue().isEmpty() ? "Data not available" :positionType) + "\n" +
-                "Core Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" :coreCompetency) + "\n" +
-                "\n";
+                "Core Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" :coreCompetency) + "\n";
+//                "\n";
     }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
