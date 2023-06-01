@@ -32,16 +32,18 @@ public class JobTest {
 
         Job job = new Job(expectedName, expectedEmployer, expectedLocation, expectedPositionType, expectedCoreCompetency);
 
-        assertTrue(job.getId() > 0); // Check if ID is assigned
-        assertEquals(expectedName, job.getName()); // Check if name is assigned correctly
+        assertTrue(job.getId() > 0);
+
         assertTrue(job.getEmployer() instanceof Employer); // Check if employer is assigned correctly
         assertTrue(job.getLocation() instanceof Location); // Check if location is assigned correctly
         assertTrue(job.getPositionType() instanceof PositionType); // Check if positionType is assigned correctly
         assertTrue(job.getCoreCompetency() instanceof CoreCompetency); // Check if coreCompetency is assigned correctly
-        assertEquals(expectedEmployer, job.getEmployer()); // Check if employer value is assigned correctly
-        assertEquals(expectedLocation, job.getLocation()); // Check if location value is assigned correctly
-        assertEquals(expectedPositionType, job.getPositionType()); // Check if positionType value is assigned correctly
-        assertEquals(expectedCoreCompetency, job.getCoreCompetency()); // Check if coreCompetency value is assigned correctly
+
+        assertEquals(expectedName, job.getName()); // Check if name is assigned correctly
+        assertEquals(expectedEmployer.getValue(), job.getEmployer().getValue()); // Check if employer value is assigned correctly
+        assertEquals(expectedLocation.getValue(), job.getLocation().getValue()); // Check if location value is assigned correctly
+        assertEquals(expectedPositionType.getValue(), job.getPositionType().getValue()); // Check if positionType value is assigned correctly
+        assertEquals(expectedCoreCompetency.getValue(), job.getCoreCompetency().getValue()); // Check if coreCompetency value is assigned correctly
     }
 
     @Test
@@ -70,18 +72,13 @@ public class JobTest {
         job.setCoreCompetency(new CoreCompetency("Persistence"));
 
         String jobString = job.toString();
-        assertTrue(jobString.startsWith("\n"));
-        assertTrue(jobString.endsWith("\n"));
+        char firstChar = jobString.charAt(0);
+        char lastChar = jobString.charAt(jobString.length() - 1);
+
+        assertEquals('\n', firstChar);
+        assertEquals('\n', lastChar);
+
     }
-//    public void testToStringStartsAndEndsWithNewLine() {
-//        Job job = new Job();
-//        String jobString = job.toString();
-//        assertTrue(jobString.endsWith("\n"));
-////        char firstChar = jobString.charAt(0);
-////        char lastChar = jobString.charAt(jobString.length() - 1);
-////        assertEquals('\n', firstChar);
-////        assertEquals('\n', lastChar);
-//    }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
