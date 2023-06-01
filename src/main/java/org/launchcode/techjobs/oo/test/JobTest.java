@@ -38,7 +38,6 @@ public class JobTest {
         assertTrue(job.getLocation() instanceof Location); // Check if location is assigned correctly
         assertTrue(job.getPositionType() instanceof PositionType); // Check if positionType is assigned correctly
         assertTrue(job.getCoreCompetency() instanceof CoreCompetency); // Check if coreCompetency is assigned correctly
-
         assertEquals(expectedEmployer, job.getEmployer()); // Check if employer value is assigned correctly
         assertEquals(expectedLocation, job.getLocation()); // Check if location value is assigned correctly
         assertEquals(expectedPositionType, job.getPositionType()); // Check if positionType value is assigned correctly
