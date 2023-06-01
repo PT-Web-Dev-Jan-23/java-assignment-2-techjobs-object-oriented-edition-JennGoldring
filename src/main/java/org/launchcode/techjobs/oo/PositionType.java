@@ -1,38 +1,68 @@
 package org.launchcode.techjobs.oo;
 
-public class PositionType {
+import java.util.Objects;
 
-    private int id;
-    private static int nextId = 1;
-    private String value;
-
-    public PositionType() {
-        id = nextId;
-        nextId++;
-    }
+public class PositionType extends JobField {
 
     public PositionType(String value) {
-        this();
-        this.value = value;
+        super(value);
     }
+//
+//    private int id;
+//    private static int nextId = 1;
+//    private String value;
+//
+//    public PositionType() {
+//        id = nextId;
+//        nextId++;
+//    }
+//
+//    public PositionType(String value) {
+//        this();
+//        this.value = value;
+//    }
 
     // TODO: Add a custom toString() method that returns the data stored in 'value'.
+
+    @Override
+    public String toString() {
+        return getValue();
+    }
+//
+//    private static String getString() {
+//        return "a position type";
+//    }
+    // removed this and test passed. Yay!
+
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
     //  their id fields match.
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PositionType)) return false;
+        PositionType that = (PositionType) o;
+        return getId() == that.getId() && getValue().equals(that.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getValue());
+    }
+}
     // Getters and Setters:
 
-    public int getId() {
-        return id;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-}
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public String getValue() {
+//        return value;
+//    }
+//
+//    public void setValue(String value) {
+//        this.value = value;
+//    }
+//
+//}
