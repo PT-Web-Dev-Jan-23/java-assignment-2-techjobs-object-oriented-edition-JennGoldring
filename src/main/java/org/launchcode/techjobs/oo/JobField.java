@@ -6,7 +6,7 @@ public abstract class JobField {
     private static int nextId = 1;
     private String value;
 
-    public JobField() {
+    public JobField(String value) {
         id = nextId;
         nextId++;
     }
