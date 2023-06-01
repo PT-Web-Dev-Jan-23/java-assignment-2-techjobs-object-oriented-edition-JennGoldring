@@ -22,12 +22,13 @@ public class PositionType {
 
     @Override
     public String toString() {
-        return getString();
+        return value;
     }
-
-    private static String getString() {
-        return "a position type";
-    }
+//
+//    private static String getString() {
+//        return "a position type";
+//    }
+    // removed this and test passed. Yay!
 
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when

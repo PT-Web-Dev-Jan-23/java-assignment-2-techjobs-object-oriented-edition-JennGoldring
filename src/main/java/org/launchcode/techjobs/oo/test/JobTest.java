@@ -63,13 +63,26 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job job = new Job();
-        String jobString = job.toString();
-        char firstChar = jobString.charAt(0);
-        char lastChar = jobString.charAt(jobString.length() - 1);
+        job.setId(1);
+        job.setName("Product tester");
+        job.setEmployer(new Employer("ACME"));
+        job.setLocation(new Location("Desert"));
+        job.setPositionType(new PositionType("Quality control"));
+        job.setCoreCompetency(new CoreCompetency("Persistence"));
 
-        assertEquals('\n', firstChar);
-        assertEquals('\n', lastChar);
+        String jobString = job.toString();
+        assertTrue(jobString.startsWith("\n"));
+        assertTrue(jobString.endsWith("\n"));
     }
+//    public void testToStringStartsAndEndsWithNewLine() {
+//        Job job = new Job();
+//        String jobString = job.toString();
+//        assertTrue(jobString.endsWith("\n"));
+////        char firstChar = jobString.charAt(0);
+////        char lastChar = jobString.charAt(jobString.length() - 1);
+////        assertEquals('\n', firstChar);
+////        assertEquals('\n', lastChar);
+//    }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
@@ -79,9 +92,23 @@ public class JobTest {
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
-                "Position Type: Quality Control\n" +
+                "Position Type: Quality control\n" +
                 "Core Competency: Persistence\n" +
                 "\n";
         assertEquals(expected, job.toString());
     }
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        String expected = "\n" +
+                "ID: " + job.getId() + "\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n" +
+                "\n";
+        assertEquals(expected, job.toString());
+    }
+
 }

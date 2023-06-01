@@ -46,15 +46,27 @@ public class Job {
         return Objects.hash(id);
     }
 
+//    @Override
+//    public String toString(){
+//        return "\n" +
+//                "ID: " + id + "\n" +
+//                "Name: " + name + "\n" +
+//                "Employer: " + employer + "\n" +
+//                "Location: " + location + "\n" +
+//                "Position Type: " + positionType + "\n" +
+//                "Core Competency: " + coreCompetency + "\n" +
+//                "\n";
+//    }
+
     @Override
     public String toString(){
         return "\n" +
                 "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n" +
+                "Name: " + (name.isEmpty() ? "Data not available" :name) + "\n" +
+                "Employer: " + (employer.getValue().isEmpty() ? "Data not available" :employer) + "\n" +
+                "Location: " + (location.getValue().isEmpty() ? "Data not available" :location) + "\n" +
+                "Position Type: " + (positionType.getValue().isEmpty() ? "Data not available" :positionType) + "\n" +
+                "Core Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" :coreCompetency) + "\n" +
                 "\n";
     }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
