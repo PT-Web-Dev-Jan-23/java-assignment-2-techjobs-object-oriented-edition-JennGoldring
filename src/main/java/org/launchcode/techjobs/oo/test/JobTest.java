@@ -3,7 +3,7 @@ package org.launchcode.techjobs.oo.test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.launchcode.techjobs.oo.Job;
+import org.launchcode.techjobs.oo.*;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class JobTest {
 
     @Test
-    public void testSettingJobID() {
+    public void testSettingJobId() {
         Job job1 = new Job();
         Job job2 = new Job();
 
@@ -23,5 +23,40 @@ public class JobTest {
     }
 
     @Test
+    public void testJobConstructorSetsAllFields() {
+        String expectedName = "Product tester";
+        Employer expectedEmployer = new Employer("ACME");
+        Location expectedLocation = new Location("Desert");
+        PositionType expectedPositionType = new PositionType("Quality control");
+        CoreCompetency expectedCoreCompetency = new CoreCompetency("Persistence");
 
+        Job job = new Job(expectedName, expectedEmployer, expectedLocation, expectedPositionType, expectedCoreCompetency);
+
+        assertTrue(job.getId() > 0); // Check if ID is assigned
+        assertEquals(expectedName, job.getName()); // Check if name is assigned correctly
+        assertTrue(job.getEmployer() instanceof Employer); // Check if employer is assigned correctly
+        assertTrue(job.getLocation() instanceof Location); // Check if location is assigned correctly
+        assertTrue(job.getPositionType() instanceof PositionType); // Check if positionType is assigned correctly
+        assertTrue(job.getCoreCompetency() instanceof CoreCompetency); // Check if coreCompetency is assigned correctly
+
+        assertEquals(expectedEmployer, job.getEmployer()); // Check if employer value is assigned correctly
+        assertEquals(expectedLocation, job.getLocation()); // Check if location value is assigned correctly
+        assertEquals(expectedPositionType, job.getPositionType()); // Check if positionType value is assigned correctly
+        assertEquals(expectedCoreCompetency, job.getCoreCompetency()); // Check if coreCompetency value is assigned correctly
+    }
+
+    @Test
+    public void testJobsForEquality() {
+        String name = "Product tester";
+        Employer employer = new Employer("ACME");
+        Location location = new Location("Desert");
+        PositionType positionType = new PositionType("Quality control");
+        CoreCompetency coreCompetency = new CoreCompetency("Persistence");
+
+        Job job1 = new Job(name, employer, location, positionType, coreCompetency);
+        Job job2 = new Job(name, employer, location, positionType, coreCompetency);
+
+        assertFalse(job1.equals(job2));
+        assertFalse(job2.equals(job1));
+    }
 }
